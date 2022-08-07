@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct Cart: View {
-    @State var name: String = ""
+            @State var name: String = ""
             @State var phone: String = ""
+            @State var orderConfirmed = false
             
             @EnvironmentObject var cartManager: CartManager
             
@@ -54,6 +55,7 @@ struct Cart: View {
                                         Spacer()
                                         Button("Place Order") {
                                             //TODO: Validation
+                                            orderConfirmed = true
                                         }
                                             .padding()
                                             .frame(width: 250.0)
@@ -68,6 +70,16 @@ struct Cart: View {
                             .listSectionSeparatorTint(Color("AccentColor"))
                             .listStyle(.insetGrouped)
                             .navigationTitle("Your Order")
+                            .alert("Order", isPresented: $orderConfirmed, actions: {
+                                Button("OK", role: .cancel) {
+                                    //TODO: send order
+                                    orderConfirmed = false
+                                    cartManager.clear()
+                                }
+                            }, message: {
+                                Text("Your order is being prepared.")
+                                    .font(.title)
+                            })
                             
                         }
                     }

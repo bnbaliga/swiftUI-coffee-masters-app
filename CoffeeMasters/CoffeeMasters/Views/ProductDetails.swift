@@ -11,8 +11,8 @@ struct ProductDetails: View {
     
     var product: Product
     @State var quantity = 1
-    @State var subTotal = 1
     @EnvironmentObject var cartManager: CartManager
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
             ScrollView {

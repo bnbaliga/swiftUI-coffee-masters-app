@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProductListing: View {
+struct ProductList: View {
     @EnvironmentObject var menuManager: MenuManager
     
     var body: some View {
@@ -21,7 +21,7 @@ struct ProductListing: View {
                             ProductDetails(product: product)
                         },
                         label:{
-                            ProductView(product: product)
+                            ProductListItem(product: product)
                         })
                     }
                 }
@@ -32,7 +32,7 @@ struct ProductListing: View {
 
 struct ProductListing_Previews: PreviewProvider {
     static var previews: some View {
-        ProductListing()
+        ProductList()
             .environmentObject(MenuManager())
     }
 }
