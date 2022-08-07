@@ -16,7 +16,7 @@ class MenuManager : ObservableObject {
     }
     
     func refreshItemsFromNetwork()  {
-            AF.request("https://firtman.github.io/coffeemasters/api/menu.json")
+            AF.request("https://raw.githubusercontent.com/bnbaliga/swiftUI-coffee-masters-app/master/CoffeeMasters/CoffeeMasters/DummyData/Menu.json")
                 .responseDecodable(of: [Category].self) { response in
                     if let menuFromNetwork = response.value {
                         self.menu = menuFromNetwork
